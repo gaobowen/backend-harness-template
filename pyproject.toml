@@ -10,7 +10,7 @@ dependencies = [
     "greenlet>=3.2,<4",
     "pydantic-settings>=2.10,<3",
     "psycopg[binary]>=3.2,<4",
-    "redis>=6,<7",
+    "redis>=6,<9",
     "sqlalchemy>=2.0,<3",
     "uvicorn[standard]>=0.35,<1",
 ]
