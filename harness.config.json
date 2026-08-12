@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 2,
+  "maxSourceFileLines": 500,
+  "sourceRoots": ["app", "scripts", "tests"],
+  "requiredFiles": [
+    ".env.example",
+    ".env.test.example",
+    "AGENTS.md",
+    "LOOP.md",
+    "Makefile",
+    "README.md",
+    "STATE.md",
+    "alembic.ini",
+    "compose.yaml",
+    "docs/api-conventions.md",
+    "docs/api.md",
+    "docs/architecture.md",
+    "docs/database-migrations.md",
+    "docs/git-workflow.md",
+    "docs/harness-adoption.md",
+    "docs/loop-operations.md",
+    "docs/openapi.json",
+    "docs/project-context.md",
+    "docs/testing.md",
+    "gate.yaml",
+    "harness/loop-budget.json",
+    "harness/loop-policy.json",
+    "harness/loop-run-log.md",
+    "harness/project.json",
+    "loop-constraints.md",
+    "pyproject.toml",
+    "scripts/check_api_policy.py",
+    "scripts/check_db_boundaries.py",
+    "scripts/check_harness.py",
+    "scripts/check_migrations.py",
+    "scripts/check_openapi.py",
+    "uv.lock",
+    "uv.toml"
+  ],
+  "requiredMakeTargets": [
+    "check-api-policy",
+    "check-db-boundaries",
+    "check-harness",
+    "db-upgrade",
+    "format-check",
+    "harness-create",
+    "harness-init",
+    "import-check",
+    "lint",
+    "migration-check",
+    "openapi-check",
+    "openapi-generate",
+    "preflight",
+    "security-audit",
+    "test-coverage",
+    "test-integration",
+    "typecheck",
+    "verify"
+  ],
+  "scmProviders": {
+    "github": {
+      "requiredFiles": [
+        ".github/dependabot.yml",
+        ".github/pull_request_template.md",
+        ".github/workflows/ci.yml"
+      ],
+      "ciFile": ".github/workflows/ci.yml",
+      "requiredCommands": [
+        "make preflight",
+        "make security-audit",
+        "make db-upgrade",
+        "make test-integration"
+      ]
+    },
+    "gitlab": {
+      "requiredFiles": [
+        ".gitlab-ci.yml",
+        ".gitlab/merge_request_templates/Default.md",
+        "renovate.json"
+      ],
+      "ciFile": ".gitlab-ci.yml",
+      "requiredCommands": [
+        "make preflight",
+        "make security-audit",
+        "make db-upgrade",
+        "make test-integration"
+      ]
+    }
+  },
+  "protectedPaths": [
+    ".env*",
+    ".github/workflows/**",
+    ".gitlab-ci.yml",
+    ".gitlab/**",
+    "**/auth/**",
+    "**/billing/**",
+    "**/payments/**",
+    "**/permissions/**",
+    "**/secrets/**",
+    "app/api/**",
+    "app/core/security.py",
+    "app/db/**",
+    "app/workers/**",
+    "migrations/**",
+    "alembic.ini",
+    "compose.yaml",
+    "Dockerfile",
+    "deploy/**",
+    "supervisor/**",
+    "pyproject.toml",
+    "uv.lock"
+  ]
+}
