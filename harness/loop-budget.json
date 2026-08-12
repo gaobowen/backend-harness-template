@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "dailyTokenBudget": 50000,
+  "maxTokensPerRun": 15000,
+  "maxItemsPerRun": 10,
+  "maxAttemptsPerItem": 2,
+  "maxRunMinutes": 30,
+  "pauseAfterConsecutiveFailedRuns": 2
+}

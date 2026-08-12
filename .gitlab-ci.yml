@@ -1,0 +1,48 @@
+default:
+  image: python:3.12-slim
+  interruptible: true
+  cache:
+    key:
+      files:
+        - uv.lock
+    paths:
+      - .cache/uv/
+  before_script:
+    - apt-get update
+    - apt-get install -y --no-install-recommends make
+    - rm -rf /var/lib/apt/lists/*
+    - python -m pip install --disable-pip-version-check uv==0.12.0
+    - uv sync --frozen --all-groups
+
+stages:
+  - verify
+
+variables:
+  APP_ENV: test
+  APP_ENV_FILE: .env.test.example
+  DATABASE_URL: postgresql+psycopg://backend:backend@postgres:5432/backend_harness_test
+  REDIS_URL: redis://redis:6379/15
+  UV_CACHE_DIR: .cache/uv
+  POSTGRES_DB: backend_harness_test
+  POSTGRES_USER: backend
+  POSTGRES_PASSWORD: backend
+
+services:
+  - name: postgres:17-alpine
+    alias: postgres
+  - name: redis:7-alpine
+    alias: redis
+
+verify:
+  stage: verify
+  timeout: 20m
+  script:
+    - make preflight
+    - make security-audit
+    - make db-upgrade
+    - make test-integration
+  artifacts:
+    when: always
+    expire_in: 7 days
+    paths:
+      - coverage.xml

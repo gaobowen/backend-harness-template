@@ -1,0 +1,38 @@
+version: 1
+
+defaults:
+  auto_commit: false
+  auto_push: false
+  auto_merge: false
+  require_human_review: true
+
+limits:
+  max_attempts_per_item: 2
+  max_files_per_change: 5
+
+protected_paths:
+  - ".env*"
+  - ".github/workflows/**"
+  - ".gitlab-ci.yml"
+  - ".gitlab/**"
+  - "**/auth/**"
+  - "**/billing/**"
+  - "**/payments/**"
+  - "**/permissions/**"
+  - "**/secrets/**"
+  - "app/api/**"
+  - "app/core/security.py"
+  - "app/db/**"
+  - "app/workers/**"
+  - "migrations/**"
+  - "alembic.ini"
+  - "compose.yaml"
+  - "Dockerfile"
+  - "deploy/**"
+  - "supervisor/**"
+  - "pyproject.toml"
+  - "uv.lock"
+
+allowed_report_writes:
+  - "STATE.md"
+  - "harness/loop-run-log.md"

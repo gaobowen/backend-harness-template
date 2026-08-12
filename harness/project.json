@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 2,
+  "name": "backend-harness-template",
+  "description": "A reusable FastAPI backend with deterministic engineering gates and a report-only agent loop.",
+  "scmProvider": "both"
+}

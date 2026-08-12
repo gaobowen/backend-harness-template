@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "autonomy": "report-only",
+  "maxAttemptsPerItem": 2,
+  "maxFilesPerChange": 5,
+  "allowAutoCommit": false,
+  "allowAutoPush": false,
+  "allowAutoMerge": false,
+  "requireIndependentVerification": true,
+  "protectedPaths": [
+    ".env*",
+    ".github/workflows/**",
+    ".gitlab-ci.yml",
+    ".gitlab/**",
+    "**/auth/**",
+    "**/billing/**",
+    "**/payments/**",
+    "**/permissions/**",
+    "**/secrets/**",
+    "app/api/**",
+    "app/core/security.py",
+    "app/db/**",
+    "app/workers/**",
+    "migrations/**",
+    "alembic.ini",
+    "compose.yaml",
+    "Dockerfile",
+    "deploy/**",
+    "supervisor/**",
+    "pyproject.toml",
+    "uv.lock"
+  ]
+}
